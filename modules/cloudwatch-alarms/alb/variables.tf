@@ -30,17 +30,20 @@ variable "target_group_arn_suffix" {
 }
 
 variable "lb_arn_suffix" {
-  type = string
+  type        = string
+  description = "ARN for load balancer, this converts to LoadBalancer name used as dimension in CloudWatch alarm"
 }
 
 variable "enabled" {
   description = "Variable to enable or disable alarms"
   default     = true
+  type        = bool
 }
 
 variable "period" {
   description = "The period in seconds over which the specified statistic is applied."
   default     = 60
+  type        = number
 }
 
 variable "target_response_time" {
@@ -65,4 +68,5 @@ variable "httpcode_target_5xx_count" {
 variable "evaluation_periods" {
   description = "The number of periods over which data is compared to the specified threshold."
   default     = 3
+  type        = number
 }

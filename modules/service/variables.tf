@@ -1,9 +1,11 @@
 variable "role" {
-  type = string
+  type        = string
+  description = "The role of the container (e.g. 'app', 'nginx')"
 }
 
 variable "container_name" {
-  type = string
+  type        = string
+  description = "The name of the container"
 }
 
 variable "entrypoint" {
@@ -83,7 +85,9 @@ variable "domain" {
   default     = ""
 }
 
-variable "app_generic_config" {}
+variable "app_generic_config" {
+  description = "Configuration passed from app-generic module"
+}
 
 variable "task_role_arn" {
   type        = string
@@ -202,11 +206,15 @@ variable "override_tagret_group_name" {
 
 // scaling workers based on SQS
 variable "as_sqs_queue_name" {
-  default = null
+  default     = null
+  type        = string
+  description = "The name of the SQS queue to use for scaling"
 }
 
 variable "as_sqs_scale_down_cooldown" {
-  default = 60
+  default     = 60
+  type        = number
+  description = "AutoScaler: Cooldown period in seconds after scale-out activity"
 }
 
 variable "as_sqs_step_adjustment" {
