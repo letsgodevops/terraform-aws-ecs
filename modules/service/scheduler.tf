@@ -12,7 +12,7 @@ data "aws_iam_policy_document" "scheduler_assume_role" {
 
     principals {
       type        = "Service"
-      identifiers = ["scheduler.amazonaws.com"]
+      identifiers = ["scheduler.amazonaws.com", "pipes.amazonaws.com"]
     }
     condition {
       test     = "StringEquals"
