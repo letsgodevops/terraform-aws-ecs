@@ -14,6 +14,12 @@ variable "entrypoint" {
   default     = null
 }
 
+variable "command" {
+  type        = list(string)
+  description = "The command that is passed to the container"
+  default     = null
+}
+
 // container variables
 variable "environment_variables" {
   description = "The environment variables to pass to all application containers"
