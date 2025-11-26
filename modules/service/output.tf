@@ -33,3 +33,19 @@ output "monitoring" {
     alarms  = local.alarms
   }
 }
+
+
+
+output "schedule_config" {
+  value = {
+    cluster_arn           = var.app_generic_config.ecs_cluster_config.arn
+    task_definition_arn   = aws_ecs_task_definition.this.arn_without_revision
+    container_name        = var.container_name
+    private_subnet_ids    = var.app_generic_config.private_subnet_ids
+    public_subnet_ids     = var.app_generic_config.public_subnet_ids
+    security_group_id     = var.app_generic_config.security_group_id
+    schedule_group        = aws_scheduler_schedule_group.this.name
+    scheduler_role_arn    = aws_iam_role.scheduler.arn
+    scheduler_dlq_pattern = local.scheduler_dlq_pattern
+  }
+}

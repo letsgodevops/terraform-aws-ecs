@@ -41,13 +41,18 @@
 | [aws_cloudwatch_metric_alarm.sqs_scale_up](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_metric_alarm) | resource |
 | [aws_ecs_service.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecs_service) | resource |
 | [aws_ecs_task_definition.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecs_task_definition) | resource |
+| [aws_iam_role.scheduler](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
+| [aws_iam_role_policy.scheduler_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy) | resource |
 | [aws_lb_listener_rule.domain_routing](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_listener_rule) | resource |
 | [aws_lb_target_group.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_target_group) | resource |
 | [aws_route53_record.internal](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
+| [aws_scheduler_schedule_group.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/scheduler_schedule_group) | resource |
 | [aws_security_group_rule.allow_http_alb](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [cloudflare_record.exteranl](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/record) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 | [aws_ecs_task_definition.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ecs_task_definition) | data source |
+| [aws_iam_policy_document.scheduler_assume_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.scheduler_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/region) | data source |
 
 ## Inputs
@@ -68,6 +73,7 @@
 | <a name="input_as_sqs_step_adjustment"></a> [as\_sqs\_step\_adjustment](#input\_as\_sqs\_step\_adjustment) | n/a | `list(object({ metric_interval_lower_bound = string, metric_interval_upper_bound = string, scaling_adjustment = string }))` | <pre>[<br/>  {<br/>    "metric_interval_lower_bound": 1,<br/>    "metric_interval_upper_bound": 500,<br/>    "scaling_adjustment": 1<br/>  },<br/>  {<br/>    "metric_interval_lower_bound": 500,<br/>    "metric_interval_upper_bound": 1000,<br/>    "scaling_adjustment": 2<br/>  },<br/>  {<br/>    "metric_interval_lower_bound": 1000,<br/>    "metric_interval_upper_bound": 2000,<br/>    "scaling_adjustment": 3<br/>  }<br/>]</pre> | no |
 | <a name="input_assign_public_ip"></a> [assign\_public\_ip](#input\_assign\_public\_ip) | Assign a public IP address to the ENI. Required True for public subnets | `bool` | `true` | no |
 | <a name="input_capacity_provider_strategy"></a> [capacity\_provider\_strategy](#input\_capacity\_provider\_strategy) | Map of capacity providers and weights. Only valid keys: FARGATE\_SPOT, FARGATE. Weights must sum to 100. | `map(number)` | <pre>{<br/>  "FARGATE": 5,<br/>  "FARGATE_SPOT": 95<br/>}</pre> | no |
+| <a name="input_command"></a> [command](#input\_command) | The command that is passed to the container | `list(string)` | `null` | no |
 | <a name="input_container_name"></a> [container\_name](#input\_container\_name) | The name of the container | `string` | n/a | yes |
 | <a name="input_cpu"></a> [cpu](#input\_cpu) | The number of cpu units to reserve for the service. | `number` | `null` | no |
 | <a name="input_create_ecs_alarms"></a> [create\_ecs\_alarms](#input\_create\_ecs\_alarms) | Set to `false` to not create alarms | `bool` | `true` | no |
@@ -107,4 +113,5 @@
 | <a name="output_external_url"></a> [external\_url](#output\_external\_url) | The external URL of the service |
 | <a name="output_internal_fqdn"></a> [internal\_fqdn](#output\_internal\_fqdn) | The FQDN of internal route53 record |
 | <a name="output_monitoring"></a> [monitoring](#output\_monitoring) | CloudWatch dashboard and alarms for the ECS service |
+| <a name="output_schedule_config"></a> [schedule\_config](#output\_schedule\_config) | n/a |
 <!-- END_TF_DOCS -->

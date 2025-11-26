@@ -60,6 +60,7 @@ module "container_app" {
   name               = var.container_name
   image              = "${local.ecr_repo}/${var.container_name}:latest"
   entrypoint         = var.entrypoint
+  command            = var.command
   memory             = local.memory - module.container_nginx.memory
   memory_reservation = var.memory_reservation
   cpu                = local.cpu - module.container_nginx.cpu
