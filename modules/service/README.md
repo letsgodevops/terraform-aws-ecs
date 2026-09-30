@@ -23,7 +23,7 @@
 | <a name="module_alb_alarms"></a> [alb\_alarms](#module\_alb\_alarms) | ../cloudwatch-alarms/alb | n/a |
 | <a name="module_container_app"></a> [container\_app](#module\_container\_app) | ../container | n/a |
 | <a name="module_container_nginx"></a> [container\_nginx](#module\_container\_nginx) | ../container | n/a |
-| <a name="module_dashboard"></a> [dashboard](#module\_dashboard) | github.com/letsgodevops/terraform-aws-cloudwatch//modules/dashboards/ecs | v0.0.4 |
+| <a name="module_dashboard"></a> [dashboard](#module\_dashboard) | github.com/letsgodevops/terraform-aws-cloudwatch//modules/dashboards/ecs | v0.0.5 |
 | <a name="module_ecs_alarms"></a> [ecs\_alarms](#module\_ecs\_alarms) | ../cloudwatch-alarms/ecs | n/a |
 | <a name="module_fargate_resources"></a> [fargate\_resources](#module\_fargate\_resources) | ../fargate-resources | n/a |
 
