@@ -4,7 +4,7 @@ locals {
 }
 
 module "dashboard" {
-  source = "github.com/letsgodevops/terraform-aws-cloudwatch//modules/dashboards/ecs?ref=v0.0.4"
+  source = "github.com/letsgodevops/terraform-aws-cloudwatch//modules/dashboards/ecs?ref=v0.0.5"
 
   section_name = "${var.app_generic_config.application}: ${var.role} @ ${var.app_generic_config.environment}"
   name         = "${var.container_name}:${var.app_generic_config.application}-${var.role}"
@@ -12,6 +12,8 @@ module "dashboard" {
   cluster_id   = aws_ecs_service.this.cluster
   service_name = aws_ecs_service.this.name
 
+  # Known at plan time, unlike the ARN of a new target group (which would make the dashboard's count fail).
+  alb_enabled          = local.alb_enabled
   alb_target_group_arn = local.alb_count > 0 ? aws_lb_target_group.this.0.arn : null
 }
 
